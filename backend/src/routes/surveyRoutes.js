@@ -1,13 +1,18 @@
 const express = require('express');
-const SurveyController = require('../controllers/surveyController');
+const {
+    createSurvey,
+    deleteSurvey,
+    getAllSurveys,
+    getSurveyById,
+    updateSurvey
+} = require('../controllers/surveyController');
 
 const router = express.Router();
-const surveyController = new SurveyController();
 
-router.get('/', surveyController.getAllSurveys);
-router.get('/:id', surveyController.getSurveyById);
-router.post('/', surveyController.createSurvey);
-router.put('/:id', surveyController.updateSurvey);
-router.delete('/:id', surveyController.deleteSurvey);
+router.get('/', getAllSurveys);
+router.get('/:id', getSurveyById);
+router.post('/', createSurvey);
+router.put('/:id', updateSurvey);
+router.delete('/:id', deleteSurvey);
 
 module.exports = router;
